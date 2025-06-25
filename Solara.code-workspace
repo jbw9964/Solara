@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "Solar-PlatformIO",
+			"path": "arduino/Solara"
+		}
+	],
+	"settings": {}
+}
