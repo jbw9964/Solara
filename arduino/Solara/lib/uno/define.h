@@ -4,6 +4,9 @@
 
 #include <Arduino.h>
 
+#define MIN(a, b) ((a) < (b) ? (a) : (b))
+#define MAX(a, b) ((a) > (b) ? (a) : (b))
+
 // sensor/**
 #define MAX_LIGHT_RESISTANCE 1023
 

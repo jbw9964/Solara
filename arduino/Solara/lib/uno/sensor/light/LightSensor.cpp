@@ -26,6 +26,7 @@ LightSensor::~LightSensor()
 
 int LightSensor::readValue()
 {
+    // when light becomes brighter, sensorValue becomes lower
     int sensorValue = Sensor::readValue();
 
     if (sensorValue < 0)
@@ -34,7 +35,8 @@ int LightSensor::readValue()
         return -1;
     }
 
-    // 빛 센서 읽은 값은 저항값. 밝을수록 낮고 어두울수록 높음.
+    // 최대 밝기값에 맞춰 맵핑
+    // sensorValue is the resistance value, which is inversely proportional to brightness, lightValue
     int lightValue = map(sensorValue, 0, this->getMaxResistance(), maxBrightness, 0);
 
     return lightValue;
