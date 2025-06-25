@@ -5,8 +5,8 @@
 class Sensor
 {
 private:
-    int pin;
-    bool isDigital;
+    const int pin;
+    const bool isDigital;
     bool initialized = false;
 
 protected:
@@ -17,9 +17,10 @@ protected:
 public:
     virtual ~Sensor();
 
-    bool isInitialized();
-    int getPin();
-    bool isDigitalSensor();
+    bool isInitialized() const;
+    int getPin() const;
+    bool isDigitalSensor() const;
+
     virtual int readValue() = 0;
 };
 

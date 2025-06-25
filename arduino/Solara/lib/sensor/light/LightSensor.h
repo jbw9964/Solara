@@ -11,14 +11,17 @@
 class LightSensor : public Sensor
 {
 private:
-    int maxBrightness = 1023;
+    const int maxBrightness;
+    const int maxResistance;
 
 public:
-    LightSensor(int pin, int maxBrightness = 1023);
+    LightSensor(int pin, int maxBrightness, int maxResistance = MAX_LIGHT_RESISTANCE);
     ~LightSensor() override;
 
     int readValue() override;
-    bool isInitialized() { return Sensor::isInitialized(); }
+
+    int getMaxBrightness() const;
+    int getMaxResistance() const;
 };
 
 #endif

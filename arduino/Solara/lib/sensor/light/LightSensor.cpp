@@ -2,15 +2,13 @@
 #include <Arduino.h>
 #include <light/LightSensor.h>
 
-LightSensor::LightSensor(int pin, int maxBrightness) : Sensor(pin, false)
+LightSensor::LightSensor(int pin, int maxBrightness, int maxResistance) : Sensor(pin, false), maxBrightness(maxBrightness), maxResistance(maxResistance)
 {
-    this->maxBrightness = maxBrightness;
 }
 
 LightSensor::~LightSensor()
 {
     Sensor::prepareDestroy();
-    this->maxBrightness = -1;
 }
 
 int LightSensor::readValue()
@@ -24,7 +22,17 @@ int LightSensor::readValue()
     }
 
     // 빛 센서 읽은 값은 저항값. 밝을수록 낮고 어두울수록 높음.
-    int lightValue = map(sensorValue, 0, MAX_LIGHT_RESISTANCE, maxBrightness, 0);
+    int lightValue = map(sensorValue, 0, this->getMaxResistance(), maxBrightness, 0);
 
     return lightValue;
+}
+
+int LightSensor::getMaxBrightness() const
+{
+    return this->maxBrightness;
+}
+
+int LightSensor::getMaxResistance() const
+{
+    return this->maxResistance;
 }

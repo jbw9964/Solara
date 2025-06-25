@@ -2,9 +2,8 @@
 #include <Arduino.h>
 #include <Sensor.h>
 
-Sensor::Sensor(int pin, bool isDigital)
+Sensor::Sensor(int pin, bool isDigital) : pin(pin), isDigital(isDigital)
 {
-    this->pin = pin;
     if (isDigital)
     {
         pinMode(pin, INPUT);
@@ -16,7 +15,6 @@ Sensor::Sensor(int pin, bool isDigital)
 void Sensor::prepareDestroy()
 {
     this->initialized = false;
-    this->pin = -1;
 }
 
 Sensor::~Sensor()
@@ -41,17 +39,17 @@ int Sensor::readValue()
     }
 }
 
-bool Sensor::isInitialized()
+bool Sensor::isInitialized() const
 {
     return this->initialized;
 }
 
-int Sensor::getPin()
+int Sensor::getPin() const
 {
     return this->pin;
 }
 
-bool Sensor::isDigitalSensor()
+bool Sensor::isDigitalSensor() const
 {
     return this->isDigital;
 }
