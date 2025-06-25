@@ -2,7 +2,7 @@
 #ifndef LIGHT_SENSOR_H
 #define LIGHT_SENSOR_H
 
-#include <Sensor.h>
+#include <sensor/Sensor.h>
 
 #ifndef MAX_LIGHT_RESISTANCE
 #define MAX_LIGHT_RESISTANCE 1023

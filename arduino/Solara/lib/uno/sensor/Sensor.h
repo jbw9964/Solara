@@ -2,6 +2,8 @@
 #ifndef SENSOR_H
 #define SENSOR_H
 
+#include <define.h>
+
 class Sensor
 {
 private:

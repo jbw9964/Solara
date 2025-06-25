@@ -1,11 +1,18 @@
 
 #include <Arduino.h>
-#include <Sensor.h>
+#include <sensor/Sensor.h>
 
 Sensor::Sensor(int pin, bool isDigital) : pin(pin), isDigital(isDigital)
 {
     if (isDigital)
     {
+        if (!DIGITAL_PIN(pin))
+        {
+            Serial.println("Error: Pin does not support digital input.");
+            delete this;
+            exit(1);
+        }
+        
         pinMode(pin, INPUT);
     }
 
